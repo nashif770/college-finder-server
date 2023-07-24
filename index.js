@@ -47,6 +47,7 @@ async function run() {
         const result = await collegeCollection.find().limit(3).toArray();
         res.send(result)
     })
+    
 
     app.post('/mySubmission', async(req, res) =>{
       const collegeSubmission = req.body;
@@ -55,6 +56,10 @@ async function run() {
       res.send(result);
     }) 
 
+    app.get('/mySubmission', async(req, res) => {
+      const result = await mySubmissionCollection.find().toArray();
+      res.send(result)
+  })
 
     //Colleges
     // ---------------------------------------------------
