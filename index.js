@@ -35,6 +35,7 @@ async function run() {
 
     const collegeCollection = client.db("collegeFinderDb").collection("allColleges")
     const reviewsCollection = client.db("collegeFinderDb").collection("reviews")
+    const mySubmissionCollection = client.db("collegeFinderDb").collection("mySubmission")
 
     //Colleges
     app.get('/allColleges', async(req, res) => {
@@ -47,7 +48,12 @@ async function run() {
         res.send(result)
     })
 
-    
+    app.post('/mySubmission', async(req, res) =>{
+      const collegeSubmission = req.body;
+      console.log(collegeSubmission)
+      const result = await mySubmissionCollection.insertOne(collegeSubmission);
+      res.send(result);
+    }) 
 
 
     //Colleges
